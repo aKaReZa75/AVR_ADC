@@ -195,13 +195,10 @@ Detailed descriptions of these macros can be found at the following link:
 
 ### **Initialization**
 ```c
-/*
- * Initializes the ADC module.
- * This function configures the ADC to use the default settings for the input channel and reference voltage.
- * It also enables the ADC and sets the appropriate prescaler for ADC clock.
- */
 void adc_Init(bool _initStatus);
 ```
+This function configures the ADC to use the default settings for the input channel and reference voltage.
+It also enables the ADC and sets the appropriate prescaler for ADC clock.
 
 **Example:**
 ```c
@@ -220,12 +217,9 @@ int main(void)
 
 ### **Internal Temperature Sensor**
 ```c
-/*
- * Reads the internal temperature sensor.
- * This function returns the ADC result from the internal temperature sensor.
- */
 int8_t adc_internalTemp(void);
 ```
+This function returns the ADC result from the internal temperature sensor.
 
 **Example:**
 ```c
@@ -247,13 +241,10 @@ int main(void)
 
 ### **ADC Read**
 ```c
-/*
- * Reads the ADC value from a specified ADC channel.
- * This function returns the 10-bit result from the specified ADC channel.
- */
 uint16_t adc_Read(uint8_t _adcChannel);
 ```
-
+This function returns the 10-bit result from the specified ADC channel.
+ 
 > [!IMPORTANT]
 The ATMEGA328's ADC operates **sequentially**, meaning that you cannot read multiple channels **simultaneously**. To read data from multiple ADC channels, you need to read each channel one by one, performing an individual conversion for each channel.   
 This process is not parallel, so you'll need to configure the ADC to select the desired channel before each conversion, and wait for the conversion to complete before moving on to the next channel. While this means the readings are not simultaneous, it allows for accurate sampling of each individual channel.
