@@ -197,9 +197,12 @@ Detailed descriptions of these macros can be found at the following link:
 ```c
 void adc_Init(bool _initStatus);
 ```
-This function configures the ADC to use the default settings for the input channel and reference voltage.
-It also enables the ADC and sets the appropriate prescaler for ADC clock.
-
+* This function configures the ADC to use the default settings for the input channel and reference voltage.
+* It also enables the ADC and sets the appropriate prescaler for ADC clock.
+* @param `_initStatus`:  
+   - If `_initStatus` is set to `Initialize`, the USART module will be configured and enabled.
+   - If `_initStatus` is set to `deInitialize`, the USART module will be disabled and deinitialized. 
+   
 **Example:**
 ```c
 #include "aKaReZa.h"
@@ -219,7 +222,7 @@ int main(void)
 ```c
 int8_t adc_internalTemp(void);
 ```
-This function returns the ADC result from the internal temperature sensor.
+* This function returns the ADC result from the internal temperature sensor.
 
 **Example:**
 ```c
@@ -243,8 +246,9 @@ int main(void)
 ```c
 uint16_t adc_Read(uint8_t _adcChannel);
 ```
-This function returns the 10-bit result from the specified ADC channel.
- 
+* This function returns the 10-bit result from the specified ADC channel.
+- @param `_adcChannel`: Specifies the ADC channel to be read. It is an 8-bit value, where each bit represents an ADC input channel (0-7 for the ATMEGA328).
+  
 > [!IMPORTANT]
 The ATMEGA328's ADC operates **sequentially**, meaning that you cannot read multiple channels **simultaneously**. To read data from multiple ADC channels, you need to read each channel one by one, performing an individual conversion for each channel.   
 This process is not parallel, so you'll need to configure the ADC to select the desired channel before each conversion, and wait for the conversion to complete before moving on to the next channel. While this means the readings are not simultaneous, it allows for accurate sampling of each individual channel.
