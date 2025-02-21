@@ -65,7 +65,7 @@ uint16_t adc_Read(uint8_t _adcChannel)
     bitChange(ADMUX, MUX2, bitCheck(_adcChannel, 2));
     bitChange(ADMUX, MUX1, bitCheck(_adcChannel, 1));
     bitChange(ADMUX, MUX0, bitCheck(_adcChannel, 0));
-    delay_us(10); /**< Wait for the ADC channel selection to stabilize */
+    _delay_us(10); /**< Wait for the ADC channel selection to stabilize */
     bitSet(ADCSRA, ADSC);          /**<  Start the ADC conversion */
     bitWaitHigh(ADCSRA, ADIF);     /**<  Wait until the ADC conversion is complete */
     intFlag_clear(ADCSRA, ADIF);   /**< Clear the ADC interrupt flag */
