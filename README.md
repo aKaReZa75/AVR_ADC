@@ -75,22 +75,25 @@ The **ADMUX** register selects the input channel for the ADC and the reference v
 - **MUX3..0 (ADC Channel Select Bits)**:  
   These bits select the input channel for the ADC. The ATMEGA328 provides up to 8 channels (0–7), which are used for reading analog signals. Example:
 
-  - **0000**: ADC Channel 0 (Analog input pin 0)
-  - **0001**: ADC Channel 1 (Analog input pin 1)
-  - **0010**: ADC Channel 2 (Analog input pin 2)
-  - **0011**: ADC Channel 3 (Analog input pin 3)
-  - **0100**: ADC Channel 4 (Analog input pin 4)
-  - **0101**: ADC Channel 5 (Analog input pin 5)
-  - **0110**: ADC Channel 6 (Analog input pin 6)
-  - **0111**: ADC Channel 7 (Analog input pin 7)
-  
-In addition to these, there are also options to select the **internal reference voltages**:
-  - **1000**: Internal 1.1V reference (used for measuring internal 1.1V reference against the selected channel)
-  - **1001**: Reserved (Not typically used)
-  - **1010**: Reserved (Not typically used)
-  - **1011**: Reserved (Not typically used)
-  - **1100**: Internal temperature sensor (used for measuring the internal temperature of the microcontroller)
-  - **1101 to 1111**: Reserved (Not typically used)
+| **MUX3** | **MUX2** | **MUX1** | **MUX0** | **Channel Description**                                |
+|----------|----------|----------|----------|--------------------------------------------------------|
+| 0        | 0        | 0        | 0        | ADC Channel 0 (Analog input pin 0)                     |
+| 0        | 0        | 0        | 1        | ADC Channel 1 (Analog input pin 1)                     |
+| 0        | 0        | 1        | 0        | ADC Channel 2 (Analog input pin 2)                     |
+| 0        | 0        | 1        | 1        | ADC Channel 3 (Analog input pin 3)                     |
+| 0        | 1        | 0        | 0        | ADC Channel 4 (Analog input pin 4)                     |
+| 0        | 1        | 0        | 1        | ADC Channel 5 (Analog input pin 5)                     |
+| 0        | 1        | 1        | 0        | ADC Channel 6 (Analog input pin 6)                     |
+| 0        | 1        | 1        | 1        | ADC Channel 7 (Analog input pin 7)                     |
+| 1        | 0        | 0        | 0        | Internal 1.1V reference (used for measuring internal 1.1V reference against the selected channel) |
+| 1        | 0        | 0        | 1        | Reserved (Not typically used)                          |
+| 1        | 0        | 1        | 0        | Reserved (Not typically used)                          |
+| 1        | 0        | 1        | 1        | Reserved (Not typically used)                          |
+| 1        | 1        | 0        | 0        | Internal temperature sensor (used for measuring the internal temperature of the microcontroller) |
+| 1        | 1        | 0        | 1        | Reserved (Not typically used)                          |
+| 1        | 1        | 1        | 0        | Reserved (Not typically used)                          |
+| 1        | 1        | 1        | 1        | Reserved (Not typically used)                          |
+
 
 - **ADLAR (ADC Left Adjust Result)**:  
   This bit controls the alignment of the ADC result. When set to **1**, the result is left-aligned in the ADC Data Registers (i.e., the 10-bit result is placed in the high byte **ADCH**). If cleared to **0**, the result is right-aligned (i.e., the 10-bit result is placed in the low byte **ADCL**).
