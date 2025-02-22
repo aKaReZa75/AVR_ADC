@@ -54,12 +54,43 @@ The **ADCSRA** register manages the overall operation of the ADC, including enab
 
 The **ADMUX** register selects the input channel for the ADC and the reference voltage for the conversion.
 
-| Bit  | Name       | Description                                         |
-|------|------------|-----------------------------------------------------|
-| 7    | **ADLAR**  | ADC Left Adjust Result (Adjusts result alignment)   |
-| 6-4  | **MUX3..0**| ADC Channel Select Bits (Selects input channel)     |
-| 3-2  | **REFS1..0**| Reference Voltage Selection Bits (Select reference voltage) |
-| 1-0  | -          | Reserved (Not used)                                 |
+| Bit  | Name       | Description                                                     |
+|------|------------|---------------------------------------------------------------|
+| 7    | **REFS1**  | Reference Voltage Selection Bit 1                             |
+| 6    | **REFS0**  | Reference Voltage Selection Bit 0                             |
+| 5    | **ADLAR**  | ADC Left Adjust Result (Adjusts result alignment)              |
+| 4    | -          | Reserved (Not used)                                             |
+| 3    | **MUX3**   | ADC Channel Select Bit 3                                       |
+| 2    | **MUX2**   | ADC Channel Select Bit 2                                       |
+| 1    | **MUX1**   | ADC Channel Select Bit 1                                       |
+| 0    | **MUX0**   | ADC Channel Select Bit 0                                       |
+
+- **REFS1..0 (Reference Voltage Selection Bits)**:  
+  These bits determine the reference voltage used for ADC conversion. The available settings are:
+  - **00**: AREF, with the internal reference voltage turned off.
+  - **01**: AVCC with an external capacitor at the AREF pin.
+  - **10**: Internal 1.1V reference voltage with an external capacitor at the AREF pin.
+  - **11**: Reserved (not commonly used).
+
+- **MUX3..0 (ADC Channel Select Bits)**:  
+  These bits select the input channel for the ADC. The ATMEGA328 provides up to 8 channels (0–7), which are used for reading analog signals. Example:
+
+  - **0000**: ADC Channel 0 (Analog input pin 0)
+  - **0001**: ADC Channel 1 (Analog input pin 1)
+  - **0010**: ADC Channel 2 (Analog input pin 2)
+  - **0011**: ADC Channel 3 (Analog input pin 3)
+  - **0100**: ADC Channel 4 (Analog input pin 4)
+  - **0101**: ADC Channel 5 (Analog input pin 5)
+  - **0110**: ADC Channel 6 (Analog input pin 6)
+  - **0111**: ADC Channel 7 (Analog input pin 7)
+  
+In addition to these, there are also options to select the **internal reference voltages**:
+  - **1000**: Internal 1.1V reference (used for measuring internal 1.1V reference against the selected channel)
+  - **1001**: Reserved (Not typically used)
+  - **1010**: Reserved (Not typically used)
+  - **1011**: Reserved (Not typically used)
+  - **1100**: Internal temperature sensor (used for measuring the internal temperature of the microcontroller)
+  - **1101 to 1111**: Reserved (Not typically used)
 
 - **ADLAR (ADC Left Adjust Result)**:  
   This bit controls the alignment of the ADC result. When set to **1**, the result is left-aligned in the ADC Data Registers (i.e., the 10-bit result is placed in the high byte **ADCH**). If cleared to **0**, the result is right-aligned (i.e., the 10-bit result is placed in the low byte **ADCL**).
@@ -93,21 +124,6 @@ When **ADLAR** is cleared to **0**, the 10-bit result is **right-aligned**, mean
 - **ADCH**: Contains the 2 most significant bits (**11110000** from the higher part of the result `0x03C3` → 0xF0).
 - **ADCL**: Contains the 8 least significant bits (**00000011** from the lower part of the result `0x03C3` → 0x03).
 
-
-- **MUX3..0 (ADC Channel Select Bits)**:  
-  These bits select the input channel for the ADC. The ATMEGA328 provides up to 8 channels (0–7), which are used for reading analog signals. Example:
-  - **0000**: ADC Channel 0
-  - **0001**: ADC Channel 1
-  - **0010**: ADC Channel 2
-  - **0111**: ADC Channel 7
-
-- **REFS1..0 (Reference Voltage Selection Bits)**:  
-  These bits determine the reference voltage used for ADC conversion. The available settings are:
-  - **00**: AREF, with the internal reference voltage turned off.
-  - **01**: AVCC with an external capacitor at the AREF pin.
-  - **10**: Internal 1.1V reference voltage with an external capacitor at the AREF pin.
-  - **11**: Reserved (not commonly used).
-
 ### **3. ADC Data Registers (ADCL, ADCH)**
 
 These registers hold the result of the ADC conversion. The result is stored as a 10-bit value, with the lower 8 bits stored in **ADCL** and the upper 2 bits stored in **ADCH**.
@@ -129,26 +145,25 @@ The **ADCSRB** register controls additional features for the ADC, such as auto-t
 
 | Bit  | Name         | Description                                             |
 |------|--------------|---------------------------------------------------------|
-| 7    | **ADTS2**    | ADC Trigger Source Select Bit 2 (Part of Auto-Trigger Source) |
-| 6    | **ADTS1**    | ADC Trigger Source Select Bit 1 (Part of Auto-Trigger Source) |
-| 5    | **ADTS0**    | ADC Trigger Source Select Bit 0 (Part of Auto-Trigger Source) |
-| 4    | **ACME**     | Analog Comparator Multiplexer Enable (Selects ADC input from the analog comparator output) |
-| 3-0  | **Reserved** | Reserved bits (not used)                                 |
-
+| 7-3  | **Reserved** | Reserved bits (not used)  |
+| 2    | **ADTS2**    | ADC Trigger Source Select Bit 2 (Part of Auto-Trigger Source) |
+| 1    | **ADTS1**    | ADC Trigger Source Select Bit 1 (Part of Auto-Trigger Source) |
+| 0    | **ADTS0**    | ADC Trigger Source Select Bit 0 (Part of Auto-Trigger Source) |
 
 - **ADTS2..0 (ADC Trigger Source Select Bits)**:  
   These three bits select the source of the auto-trigger for the ADC conversion. When enabled, ADC conversions can be triggered automatically by various events like a timer overflow or an external interrupt. The possible settings for these bits are:
-  - **000**: Free running mode (conversions happen continuously).
-  - **001**: Triggered by an external interrupt (INT0).
-  - **010**: Triggered by the timer/counter 0 overflow.
-  - **011**: Triggered by the timer/counter 0 compare match.
-  - **100**: Triggered by the timer/counter 1 overflow.
-  - **101**: Triggered by the timer/counter 1 compare match A.
-  - **110**: Triggered by the timer/counter 1 compare match B.
-  - **111**: Triggered by an external pin (like INT1).
 
-- **ACME (Analog Comparator Multiplexer Enable)**:  
-  This bit enables the analog comparator as an input to the ADC, allowing the ADC to sample the output of the analog comparator. Setting this bit to **1** selects the analog comparator's output as the input for the ADC, instead of a regular ADC channel.
+| **ADTS2** | **ADTS1** | **ADTS0** | **Trigger Source**                                      |
+|-----------|-----------|-----------|--------------------------------------------------------|
+| 0         | 0         | 0         | Free Running Mode (The ADC starts converting continuously without an external trigger) |
+| 0         | 0         | 1         | Analog Comparator (The ADC starts conversion when the analog comparator triggers) |
+| 0         | 1         | 0         | External Interrupt Request 0 (Triggered by external interrupt on pin 0) |
+| 0         | 1         | 1         | Timer/Counter0 Compare Match A (Triggered by the compare match event of Timer/Counter0) |
+| 1         | 0         | 0         | Timer/Counter0 Overflow (Triggered by Timer/Counter0 overflow) |
+| 1         | 0         | 1         | Timer/Counter1 Compare Match B (Triggered by the compare match event of Timer/Counter1) |
+| 1         | 1         | 0         | Timer/Counter1 Overflow (Triggered by Timer/Counter1 overflow) |
+| 1         | 1         | 1         | Timer/Counter1 Capture Event (Triggered by a capture event on Timer/Counter1) |
+
 
 
 ### **5. Digital Input Disable Register 0 (DIDR0)**
@@ -157,8 +172,7 @@ The **DIDR0** register disables the digital input buffers on certain pins, makin
 
 | Bit  | Name     | Description                                                 |
 |------|----------|-------------------------------------------------------------|
-| 7    | **ADC7D**| Digital Input Disable for ADC Channel 7                     |
-| 6    | **ADC6D**| Digital Input Disable for ADC Channel 6                     |
+| 7-6  | **Reserved** | Reserved bits (not used)  |
 | 5    | **ADC5D**| Digital Input Disable for ADC Channel 5                     |
 | 4    | **ADC4D**| Digital Input Disable for ADC Channel 4                     |
 | 3    | **ADC3D**| Digital Input Disable for ADC Channel 3                     |
@@ -167,11 +181,11 @@ The **DIDR0** register disables the digital input buffers on certain pins, makin
 | 0    | **ADC0D**| Digital Input Disable for ADC Channel 0                     |
 
 - **ADCxD (Digital Input Disable for ADC Channel x)**:  
-  Each bit in the **DIDR0** register corresponds to a specific ADC channel (from ADC0 to ADC7). Setting a bit to **1** disables the digital input buffer for the corresponding channel, ensuring that the pin functions purely as an analog input. This reduces power consumption and minimizes potential interference from the digital side of the microcontroller.
+  Each bit in the **DIDR0** register corresponds to a specific ADC channel (from ADC0 to ADC5). Setting a bit to **1** disables the digital input buffer for the corresponding channel, ensuring that the pin functions purely as an analog input. This reduces power consumption and minimizes potential interference from the digital side of the microcontroller.
 
 For example:
 - Setting **ADC0D** to **1** disables the digital input buffer for ADC channel 0.
-- Setting **ADC7D** to **1** disables the digital input buffer for ADC channel 7.
+- Setting **ADC5D** to **1** disables the digital input buffer for ADC channel 5.
 
 By disabling the digital input buffers, the ADC channels are dedicated solely to analog readings, which can improve the quality and accuracy of your measurements, especially in low-power applications.
 
