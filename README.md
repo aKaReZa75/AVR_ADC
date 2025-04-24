@@ -468,19 +468,34 @@ With a **16 MHz CPU frequency** and an **ADC prescaler of 128**, the time it tak
 
 # 🔗 Resources
   Here you'll find a collection of useful links and videos related to the topic of AVR microcontrollers.  
+
+<table style="border-collapse: collapse;">
+  <tr>
+    <td valign="top" style="padding: 0 10px;">
+      <h3 style="margin: 0;">
+        <a href="https://youtu.be/SJJGwX5tNis">aKaReZa 77 – AVR, Analog - ADC</a>
+      </h3>
+      <p style="margin: 8px 0 0;">
+        Learn about the features of the Analog-to-Digital Converter (ADC) in AVR microcontrollers, including block diagrams, control and data registers, voltage measurement, multi-channel measurement, analog temperature sensor connection, internal temperature sensor usage, and noise canceler capabilities.
+      </p>
+    </td>
+    <td width="360" valign="top" style="padding: 0;">
+      <a href="https://youtu.be/SJJGwX5tNis">
+        <img src="https://img.youtube.com/vi/SJJGwX5tNis/maxresdefault.jpg"
+             width="360"
+             alt="aKaReZa 77 – AVR, Analog - ADC Thumbnail"/>
+      </a>
+    </td>
+  </tr>
+</table>
   
 > [!TIP]
 > The resources are detailed in the sections below.  
 > To access any of them, simply click on the corresponding blue link.
 
-- [aKaReZa 77 - AVR, Analog - ADC](https://youtu.be/SJJGwX5tNis)  
-  ---  
-    Learn about the features of the Analog-to-Digital Converter (ADC) in AVR microcontrollers, including block diagrams, control and data registers, voltage measurement, multi-channel measurement, analog temperature sensor connection, internal temperature sensor usage, and noise canceler capabilities.
-
 - [AVR Microntroller](https://github.com/aKaReZa75/AVR)
   ---  
     This repository contains comprehensive resources for AVR microcontrollers, including hardware schematics, software libraries, and educational projects.
-
 
 # 💻 How to Use Git and GitHub
 To access the repository files and save them on your computer, there are two methods available:
