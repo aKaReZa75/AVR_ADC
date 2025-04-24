@@ -4,9 +4,6 @@ The ADC (Analog-to-Digital Converter) in the ATMEGA328 is used to convert analog
 
 The ADC on the ATMEGA328 is capable of reading multiple channels (pins) and can be configured for various reference voltages. It is essential to understand the registers controlling the ADC and how to utilize them to get accurate readings.
 
-> [!CAUTION]
-> It is absolutely critical that you carefully read every single word of this document, line by line, to ensure you don't miss any details. Nothing can be overlooked.
-
 <table>
   <tr>
   <td valign="top">
@@ -25,7 +22,17 @@ The ADC on the ATMEGA328 is capable of reading multiple channels (pins) and can 
              alt="aKaReZa 95 - Programming, Git - PART B Thumbnail"/>
       </a>
     </td>
+
+  </td>
   </tr>
+  <tr>
+  <td colspan="2">
+
+  > [!CAUTION]
+  > It is absolutely critical that you carefully read every single word of this document, line by line, to ensure you don't miss any details. Nothing can be overlooked.
+      
+  </td>
+  </tr>  
 </table>
 
 ## Registers
