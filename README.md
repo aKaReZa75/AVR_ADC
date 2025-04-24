@@ -479,7 +479,7 @@ With a **16 MHz CPU frequency** and an **ADC prescaler of 128**, the time it tak
         Learn about the features of the Analog-to-Digital Converter (ADC) in AVR microcontrollers, including block diagrams, control and data registers, voltage measurement, multi-channel measurement, analog temperature sensor connection, internal temperature sensor usage, and noise canceler capabilities.
       </p>
     </td>
-    <td width="360" valign="top" style="padding: 0;">
+    <td width="360" valign="middle" style="padding: 0;">
       <a href="https://youtu.be/SJJGwX5tNis">
         <img src="https://img.youtube.com/vi/SJJGwX5tNis/maxresdefault.jpg"
              width="360"
