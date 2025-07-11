@@ -491,6 +491,17 @@ With a **16 MHz CPU frequency** and an **ADC prescaler of 128**, the time it tak
 # 🔗 Resources
   Here you'll find a collection of useful links and videos related to the topic of AVR microcontrollers.  
 
+```plaintext
+AVR, Analog
+  └── [aKaReZa 77 - AVR, Analog - ADC]
+       ├─ ADC Basics — Block diagram, control & data registers.
+       ├─ Functions — Configuration + raw value reading.
+       ├─ Voltage — Measurement via ADC.
+       ├─ Channels — Multi-channel measurement.
+       ├─ Temperature — External + internal sensor usage.
+       └─ Accuracy — Noise canceller feature explained.
+```
+
 <table style="border-collapse: collapse;">
   <tr>
     <td valign="top" style="padding: 0 10px;">
