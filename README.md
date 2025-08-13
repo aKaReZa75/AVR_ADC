@@ -68,13 +68,8 @@ ADC Overview
 │   │   ├─ Operation — ISR trigger when conversion complete
 │   │   └─ Clearing flags — Write 1 to ADIF
 │   │
-│   ├─ [ADC Conversion Calculation]
-│   │   └─ Topics — Voltage to ADC Value, ADC Value to Voltage
-│   │
-│   └─ [ADC Practical Examples]
-│       ├─ Reading a potentiometer
-│       ├─ Measuring battery voltage
-│       └─ Reading multiple sensors sequentially
+│   └─ [ADC Conversion Calculation]
+│       └─ Topics — Voltage to ADC Value, ADC Value to Voltage
 │
 ├── [API_Reference]
 │    ├─ File — adc.h / adc.c
