@@ -85,6 +85,10 @@ ADC Overview
     └─ [DIDR0]   — Digital Input Disable Register 0 — Disable digital buffers on ADC pins
 ```
 
+> [!TIP]
+> The resources are detailed in the sections below.  
+> To access any of them, simply click on the corresponding blue link.
+
 - [ADC Channels](./ADC_Channels.md)
   ---
   Describes all ADC input channels, multiplexer usage, and differential measurement options.
@@ -116,6 +120,10 @@ ADC Overview
 - [API Reference](./API_Reference.md)
   ---
   This section provides detailed descriptions of the functions in the `adc.h` and `adc.c` files for handling ADC operations on the ATmega328 microcontroller. Each function is designed to manage analog-to-digital conversions, read data from specific ADC channels, and interact with the internal temperature sensor. These APIs simplify ADC initialization and data acquisition, making it easier to implement analog input handling in your projects.
+
+- [AVR Microntroller](https://github.com/aKaReZa75/AVR)
+  ---  
+    This repository contains comprehensive resources for AVR microcontrollers, including hardware schematics, software libraries, and educational projects.
 
 ## **Videos Overview**
 ```plaintext
@@ -149,13 +157,6 @@ AVR, Analog
   </tr>
 </table>
   
-> [!TIP]
-> The resources are detailed in the sections below.  
-> To access any of them, simply click on the corresponding blue link.
-
-- [AVR Microntroller](https://github.com/aKaReZa75/AVR)
-  ---  
-    This repository contains comprehensive resources for AVR microcontrollers, including hardware schematics, software libraries, and educational projects.
 
 # 💻 How to Use Git and GitHub
 To access the repository files and save them on your computer, there are two methods available:
